@@ -26,17 +26,17 @@ depositType.addEventListener("change", function() {
     }
 });
 
-function calculate() {
+
+document.getElementById("btn").addEventListener("click", function (){
     const depositType = document.getElementById("depositType").value;
     const depositTerm = document.getElementById("depositTerm").value;
     const depositAmount = document.getElementById("depositAmount").value;
-
     if (depositType === "none" || depositTerm === "none"){
         alert("Вы не указали вид вклада или срок вклада")
         return
     }
 
-    if (isNaN(depositAmount)){
+    if (depositAmount === "" || isNaN(depositAmount)){
         alert("Укажите число")
         return
     }
@@ -90,4 +90,4 @@ function calculate() {
     totalAmount = depositAmount * (1 + interestRate);
 
     document.getElementById("result").innerHTML = `Вклад "${depositType}" на срок "${depositTerm}", на сумму ${depositAmount} руб. принесет процентную ставку ${interestRate * 100}%, что даст вам общую сумму ${totalAmount.toFixed(2)} руб.`
-}
+})
